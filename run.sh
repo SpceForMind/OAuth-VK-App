@@ -3,4 +3,8 @@ virtualenv env
 source env/bin/activate
 
 pip install -e .
-python src/app.py
+export FLASK_APP=src/app
+flask db init
+flask db migrate -m "user friend table"
+flask db upgrade
+flask run
