@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OAuth-VK-App</title>
+</head>
+<body>
+    <div class="you">
+        {{ user.username }}
+    </div>
+    <div class="friends">
+        <ul>
+        {% for friend in friends %}
+            <li>{{friend.username}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
