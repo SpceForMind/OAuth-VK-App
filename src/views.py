@@ -15,6 +15,8 @@ def index():
 
 @app.route("/login")
 def login():
+    if not current_user.is_anonymous:
+        return redirect(url_for("index"));
     return render_template("login.html")
 
 
@@ -33,7 +35,7 @@ def oauth_authorize():
             scope="friends",
             response_type="code",
             display="popup",
-            redirect_uri="http://127.0.0.1:5000{}".format(url_for("oauth_callback"))
+            redirect_uri="http://spaceformind.pythonanywhere.com{}".format(url_for("oauth_callback"))
         ))
 
 
@@ -49,7 +51,7 @@ def oauth_callback():
         data={
             "code": request.args["code"],
             "grant_type": "authorization_code",
-            "redirect_uri": "http://127.0.0.1:5000{}".format(url_for("oauth_callback"))
+            "redirect_uri": "http://spaceformind.pythonanywhere.com{}".format(url_for("oauth_callback"))
         },
         decoder = json.loads
     )
